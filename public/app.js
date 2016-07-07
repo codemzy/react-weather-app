@@ -1,4 +1,5 @@
 /* global React */
+/* global ReactDOM */
 
 class GreetrMessage extends React.Component {
     
@@ -65,7 +66,7 @@ class Greetr extends React.Component {
         );
     }
     
-};
+}
 
 Greetr.defaultProps = {
     name: "React",
