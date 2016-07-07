@@ -1,5 +1,12 @@
 class Greetr extends React.Component {
     
+    constructor(props) {
+        super(props);
+        this.state = {
+            name: this.props.name
+        };
+    }
+    
     _onClick(e) {
       e.preventDefault();
       var name = this.refs.name.value;
@@ -7,7 +14,7 @@ class Greetr extends React.Component {
     }
     
     render() {
-        var name = this.props.name;
+        var name = this.state.name;
         var message = this.props.message;
         return (
             <div>
