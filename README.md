@@ -8,3 +8,5 @@
 
 
 The Complete React Web App Developer Course
+
+My code and notes when completing the course.
