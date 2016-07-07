@@ -10,4 +10,8 @@ class Greetr extends React.Component {
     }
 };
 
+Greetr.defaultProps = {
+    name: "React"
+};
+
 ReactDOM.render(<Greetr name="codemzy" />, document.getElementById('app'));
