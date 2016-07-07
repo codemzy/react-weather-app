@@ -1,3 +1,43 @@
+/* global React */
+
+class GreetrMessage extends React.Component {
+    
+    render() {
+        return (
+            <div>
+                <h1>Hello {this.props.name}!</h1>
+                <p>{this.props.message}</p>
+            </div>
+        );
+    }
+    
+}
+
+class GreetrForm extends React.Component {
+    
+    _onFormSubmit(e) {
+        e.preventDefault();
+        var name = this.refs.name.value;
+        if (name.length > 0) {
+            this.refs.name.value = '';
+            // pass name up to the Greetr function
+            this.props.onNewName(name);
+        }
+    }
+    
+    render() {
+        return (
+            <div>
+                <form onSubmit={this._onFormSubmit.bind(this)}>
+                    <input type="text" ref="name" />
+                    <button>Set Name</button>
+                </form>
+            </div>
+        );
+    }
+    
+}
+
 class Greetr extends React.Component {
     
     constructor(props) {
@@ -7,19 +47,11 @@ class Greetr extends React.Component {
         };
     }
     
-    _onClick(e) {
-      e.preventDefault();
-      var nameRef = this.refs.name;
-      var name = nameRef.value;
-      // only set the state if a value has been entered
-      if (typeof name === 'string' && name.length > 0) {
-          // set state with name submitted in form
-          this.setState({
-              name: name
-          });
-      }
-      // now clear the field
-      nameRef.value = '';
+    _handleNewName(name) {
+        // set state with name passed up from the form
+        this.setState({
+          name: name
+        });
     }
     
     render() {
@@ -27,13 +59,8 @@ class Greetr extends React.Component {
         var message = this.props.message;
         return (
             <div>
-                <h1>Hello {name}!</h1>
-                <p>{message}</p>
-                
-                <form onSubmit={this._onClick.bind(this)}>
-                  <input type="text" ref="name" />
-                  <button>Set Name</button>
-                </form>
+                <GreetrMessage name={name} message={message} />
+                <GreetrForm onNewName={this._handleNewName.bind(this)} />
             </div>
         );
     }
