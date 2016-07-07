@@ -10,7 +10,12 @@ class Greetr extends React.Component {
     _onClick(e) {
       e.preventDefault();
       var name = this.refs.name.value;
-      alert(name);
+      // set state with name submitted in form
+      this.setState({
+          name: name
+      });
+      // now clear the field
+      this.refs.name.value = '';
     }
     
     render() {
