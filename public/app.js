@@ -30,7 +30,7 @@ class GreetrForm extends React.Component {
             update.message = message;
         }
         // pass the update object to the Greetr function
-        this.props.onNewName(update);
+        this.props.onNewData(update);
         
     }
     
@@ -38,9 +38,9 @@ class GreetrForm extends React.Component {
         return (
             <div>
                 <form onSubmit={this._onFormSubmit.bind(this)}>
-                    <input type="text" placeholder="Your name" ref="name" /><br />
-                    <textarea placeholder="Your message..." ref="message"></textarea><br />
-                    <button>Update</button>
+                    <div><input type="text" placeholder="Your name" ref="name" /></div>
+                    <div><textarea placeholder="Your message..." ref="message"></textarea></div>
+                    <div><button>Update</button></div>
                 </form>
             </div>
         );
@@ -58,7 +58,7 @@ class Greetr extends React.Component {
         };
     }
     
-    _handleNewName(object) {
+    _handleNewData(object) {
         // set state with name if passed up from the form
         if (object.name) {
             this.setState({
@@ -79,7 +79,7 @@ class Greetr extends React.Component {
         return (
             <div>
                 <GreetrMessage name={name} message={message} />
-                <GreetrForm onNewName={this._handleNewName.bind(this)} />
+                <GreetrForm onNewData={this._handleNewData.bind(this)} />
             </div>
         );
     }
