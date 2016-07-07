@@ -1,4 +1,11 @@
 class Greetr extends React.Component {
+    
+    _onClick(e) {
+      e.preventDefault();
+      var name = this.refs.name.value;
+      alert(name);
+    }
+    
     render() {
         var name = this.props.name;
         var message = this.props.message;
@@ -6,9 +13,15 @@ class Greetr extends React.Component {
             <div>
                 <h1>Hello {name}!</h1>
                 <p>{message}</p>
+                
+                <form onSubmit={this._onClick.bind(this)}>
+                  <input type="text" ref="name" />
+                  <button>Set Name</button>
+                </form>
             </div>
         );
     }
+    
 };
 
 Greetr.defaultProps = {
