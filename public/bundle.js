@@ -26899,11 +26899,6 @@
 	                'div',
 	                null,
 	                React.createElement(
-	                    'p',
-	                    null,
-	                    'This is the weather form'
-	                ),
-	                React.createElement(
 	                    'form',
 	                    { onSubmit: this._onFormSubmit.bind(this) },
 	                    React.createElement(
