@@ -26822,7 +26822,8 @@
 	        var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Weather).call(this, props));
 
 	        _this.state = {
-	            city: ''
+	            city: 'London',
+	            temp: 23
 	        };
 	        return _this;
 	    }
@@ -26832,7 +26833,8 @@
 	        value: function _handleSearch(city) {
 	            // set state with city passed up from the form
 	            this.setState({
-	                city: city
+	                city: city,
+	                temp: 24
 	            });
 	        }
 	    }, {
@@ -26847,7 +26849,7 @@
 	                    'Get Weather'
 	                ),
 	                React.createElement(WeatherForm, { onSearch: this._handleSearch.bind(this) }),
-	                React.createElement(WeatherMessage, { city: this.state.city })
+	                React.createElement(WeatherMessage, { city: this.state.city, temp: this.state.temp })
 	            );
 	        }
 	    }]);
@@ -26953,16 +26955,17 @@
 	    _createClass(WeatherMessage, [{
 	        key: 'render',
 	        value: function render() {
-	            if (this.props.city.length > 0) {
-	                var message = 'This will show the weather in ' + this.props.city;
-	            }
 	            return React.createElement(
 	                'div',
 	                null,
 	                React.createElement(
 	                    'p',
 	                    null,
-	                    message
+	                    'It is ',
+	                    this.props.temp,
+	                    '℃ in ',
+	                    this.props.city,
+	                    '.'
 	                )
 	            );
 	        }

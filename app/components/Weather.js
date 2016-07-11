@@ -9,14 +9,16 @@ class Weather extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            city: ''
+            city: 'London',
+            temp: 23
         };
     }
     
     _handleSearch(city) {
         // set state with city passed up from the form
         this.setState({
-          city: city
+          city: city,
+          temp: 24
         });
     }
     
@@ -25,7 +27,7 @@ class Weather extends React.Component {
             <div>
                 <h3>Get Weather</h3>
                 <WeatherForm onSearch={this._handleSearch.bind(this)} />
-                <WeatherMessage city={this.state.city} />
+                <WeatherMessage city={this.state.city} temp={this.state.temp} />
             </div>
         );
     }
