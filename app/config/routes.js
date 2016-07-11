@@ -6,6 +6,7 @@ var {Route, Router, IndexRoute, hashHistory} = require('react-router');
 var Main = require('../components/Main');
 var Weather = require('../components/Weather');
 var About = require('../components/About');
+var Examples = require('../components/Examples');
 
 // Routes
 var routes = (
@@ -13,6 +14,7 @@ var routes = (
         <Route path="/" component={Main}>
             <IndexRoute component={Weather} />
             <Route path='/about' header='Player One' component={About} />
+            <Route path='/examples' header='Player One' component={Examples} />
         </Route>
     </Router>
 );
