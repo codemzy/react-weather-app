@@ -21106,8 +21106,8 @@
 
 	var Main = __webpack_require__(235);
 	var Weather = __webpack_require__(237);
-	var About = __webpack_require__(238);
-	var Examples = __webpack_require__(239);
+	var About = __webpack_require__(240);
+	var Examples = __webpack_require__(241);
 
 	// Routes
 	var routes = React.createElement(
@@ -26809,16 +26809,33 @@
 
 	var React = __webpack_require__(1);
 
+	// components
+	var WeatherForm = __webpack_require__(238);
+	var WeatherMessage = __webpack_require__(239);
+
 	var Weather = function (_React$Component) {
 	    _inherits(Weather, _React$Component);
 
-	    function Weather() {
+	    function Weather(props) {
 	        _classCallCheck(this, Weather);
 
-	        return _possibleConstructorReturn(this, Object.getPrototypeOf(Weather).apply(this, arguments));
+	        var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Weather).call(this, props));
+
+	        _this.state = {
+	            city: 'your city'
+	        };
+	        return _this;
 	    }
 
 	    _createClass(Weather, [{
+	        key: '_updateCity',
+	        value: function _updateCity(city) {
+	            // set state with city passed up from the form
+	            this.setState({
+	                city: city
+	            });
+	        }
+	    }, {
 	        key: 'render',
 	        value: function render() {
 	            return React.createElement(
@@ -26827,8 +26844,10 @@
 	                React.createElement(
 	                    'h3',
 	                    null,
-	                    'Weather Component'
-	                )
+	                    'Get Weather'
+	                ),
+	                React.createElement(WeatherForm, { updateCity: this._updateCity.bind(this) }),
+	                React.createElement(WeatherMessage, { city: this.state.city })
 	            );
 	        }
 	    }]);
@@ -26840,6 +26859,126 @@
 
 /***/ },
 /* 238 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var React = __webpack_require__(1);
+
+	var WeatherForm = function (_React$Component) {
+	    _inherits(WeatherForm, _React$Component);
+
+	    function WeatherForm() {
+	        _classCallCheck(this, WeatherForm);
+
+	        return _possibleConstructorReturn(this, Object.getPrototypeOf(WeatherForm).apply(this, arguments));
+	    }
+
+	    _createClass(WeatherForm, [{
+	        key: '_onFormSubmit',
+	        value: function _onFormSubmit(e) {
+	            e.preventDefault();
+	            var city = this.refs.city.value;
+	            if (city.length > 0) {
+	                this.refs.city.value = '';
+	                this.props.updateCity(city);
+	            }
+	        }
+	    }, {
+	        key: 'render',
+	        value: function render() {
+	            return React.createElement(
+	                'div',
+	                null,
+	                React.createElement(
+	                    'p',
+	                    null,
+	                    'This is the weather form'
+	                ),
+	                React.createElement(
+	                    'form',
+	                    { onSubmit: this._onFormSubmit.bind(this) },
+	                    React.createElement(
+	                        'div',
+	                        null,
+	                        React.createElement('input', { type: 'text', placeholder: 'Enter city name', ref: 'city' })
+	                    ),
+	                    React.createElement(
+	                        'div',
+	                        null,
+	                        React.createElement(
+	                            'button',
+	                            null,
+	                            'Get Weather'
+	                        )
+	                    )
+	                )
+	            );
+	        }
+	    }]);
+
+	    return WeatherForm;
+	}(React.Component);
+
+	module.exports = WeatherForm;
+
+/***/ },
+/* 239 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var React = __webpack_require__(1);
+
+	var WeatherMessage = function (_React$Component) {
+	    _inherits(WeatherMessage, _React$Component);
+
+	    function WeatherMessage() {
+	        _classCallCheck(this, WeatherMessage);
+
+	        return _possibleConstructorReturn(this, Object.getPrototypeOf(WeatherMessage).apply(this, arguments));
+	    }
+
+	    _createClass(WeatherMessage, [{
+	        key: 'render',
+	        value: function render() {
+	            return React.createElement(
+	                'div',
+	                null,
+	                React.createElement(
+	                    'p',
+	                    null,
+	                    'This will show the weather in ',
+	                    this.props.city,
+	                    '.'
+	                )
+	            );
+	        }
+	    }]);
+
+	    return WeatherMessage;
+	}(React.Component);
+
+	module.exports = WeatherMessage;
+
+/***/ },
+/* 240 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -26884,7 +27023,7 @@
 	module.exports = About;
 
 /***/ },
-/* 239 */
+/* 241 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
