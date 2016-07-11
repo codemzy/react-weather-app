@@ -7,6 +7,6 @@
     ------------------------------------------------------------------------------ 
 
 
-React Boilerplate.
+React Weather.
 
-A simple React boilerplate for developing with React.
+A React app to get the weather.

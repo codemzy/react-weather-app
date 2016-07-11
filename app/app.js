@@ -1,9 +1,7 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
 
-// components
-var MainComponent = require('./components/MainComponent.js');
+// routes
+var routes = require('./config/routes');
 
-var name = "Codemzy";
-
-ReactDOM.render(<MainComponent name={name} message="This is a React BoilerPlate" />, document.getElementById('app'));
+ReactDOM.render(routes, document.getElementById('app'));
