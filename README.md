@@ -7,6 +7,6 @@
     ------------------------------------------------------------------------------ 
 
 
-The Complete React Web App Developer Course
+React Boilerplate.
 
-My code and notes when completing the course.
+A simple React boilerplate for developing with React.
