@@ -26828,8 +26828,8 @@
 	    }
 
 	    _createClass(Weather, [{
-	        key: '_updateCity',
-	        value: function _updateCity(city) {
+	        key: '_handleSearch',
+	        value: function _handleSearch(city) {
 	            // set state with city passed up from the form
 	            this.setState({
 	                city: city
@@ -26846,7 +26846,7 @@
 	                    null,
 	                    'Get Weather'
 	                ),
-	                React.createElement(WeatherForm, { updateCity: this._updateCity.bind(this) }),
+	                React.createElement(WeatherForm, { onSearch: this._handleSearch.bind(this) }),
 	                React.createElement(WeatherMessage, { city: this.state.city })
 	            );
 	        }
@@ -26889,7 +26889,7 @@
 	            var city = this.refs.city.value;
 	            if (city.length > 0) {
 	                this.refs.city.value = '';
-	                this.props.updateCity(city);
+	                this.props.onSearch(city);
 	            }
 	        }
 	    }, {

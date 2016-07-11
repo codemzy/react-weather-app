@@ -13,7 +13,7 @@ class Weather extends React.Component {
         };
     }
     
-    _updateCity(city) {
+    _handleSearch(city) {
         // set state with city passed up from the form
         this.setState({
           city: city
@@ -24,7 +24,7 @@ class Weather extends React.Component {
         return (
             <div>
                 <h3>Get Weather</h3>
-                <WeatherForm updateCity={this._updateCity.bind(this)} />
+                <WeatherForm onSearch={this._handleSearch.bind(this)} />
                 <WeatherMessage city={this.state.city} />
             </div>
         );
