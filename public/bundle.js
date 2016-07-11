@@ -46,170 +46,15 @@
 
 	'use strict';
 
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
 	var React = __webpack_require__(1);
 	var ReactDOM = __webpack_require__(33);
 
-	var GreetrMessage = function (_React$Component) {
-	    _inherits(GreetrMessage, _React$Component);
-
-	    function GreetrMessage() {
-	        _classCallCheck(this, GreetrMessage);
-
-	        return _possibleConstructorReturn(this, Object.getPrototypeOf(GreetrMessage).apply(this, arguments));
-	    }
-
-	    _createClass(GreetrMessage, [{
-	        key: 'render',
-	        value: function render() {
-	            return React.createElement(
-	                'div',
-	                null,
-	                React.createElement(
-	                    'h1',
-	                    null,
-	                    'Hello ',
-	                    this.props.name,
-	                    '!'
-	                ),
-	                React.createElement(
-	                    'p',
-	                    null,
-	                    this.props.message
-	                )
-	            );
-	        }
-	    }]);
-
-	    return GreetrMessage;
-	}(React.Component);
-
-	var GreetrForm = function (_React$Component2) {
-	    _inherits(GreetrForm, _React$Component2);
-
-	    function GreetrForm() {
-	        _classCallCheck(this, GreetrForm);
-
-	        return _possibleConstructorReturn(this, Object.getPrototypeOf(GreetrForm).apply(this, arguments));
-	    }
-
-	    _createClass(GreetrForm, [{
-	        key: '_onFormSubmit',
-	        value: function _onFormSubmit(e) {
-	            e.preventDefault();
-	            var name = this.refs.name.value;
-	            var message = this.refs.message.value;
-	            var update = {};
-	            if (name.length > 0) {
-	                this.refs.name.value = '';
-	                update.name = name;
-	            }
-	            if (message.length > 0) {
-	                this.refs.message.value = '';
-	                update.message = message;
-	            }
-	            // pass the update object to the Greetr function
-	            this.props.onNewData(update);
-	        }
-	    }, {
-	        key: 'render',
-	        value: function render() {
-	            return React.createElement(
-	                'div',
-	                null,
-	                React.createElement(
-	                    'form',
-	                    { onSubmit: this._onFormSubmit.bind(this) },
-	                    React.createElement(
-	                        'div',
-	                        null,
-	                        React.createElement('input', { type: 'text', placeholder: 'Your name', ref: 'name' })
-	                    ),
-	                    React.createElement(
-	                        'div',
-	                        null,
-	                        React.createElement('textarea', { placeholder: 'Your message...', ref: 'message' })
-	                    ),
-	                    React.createElement(
-	                        'div',
-	                        null,
-	                        React.createElement(
-	                            'button',
-	                            null,
-	                            'Update'
-	                        )
-	                    )
-	                )
-	            );
-	        }
-	    }]);
-
-	    return GreetrForm;
-	}(React.Component);
-
-	var Greetr = function (_React$Component3) {
-	    _inherits(Greetr, _React$Component3);
-
-	    function Greetr(props) {
-	        _classCallCheck(this, Greetr);
-
-	        var _this3 = _possibleConstructorReturn(this, Object.getPrototypeOf(Greetr).call(this, props));
-
-	        _this3.state = {
-	            name: _this3.props.name,
-	            message: _this3.props.message
-	        };
-	        return _this3;
-	    }
-
-	    _createClass(Greetr, [{
-	        key: '_handleNewData',
-	        value: function _handleNewData(object) {
-	            // set state with name if passed up from the form
-	            if (object.name) {
-	                this.setState({
-	                    name: object.name
-	                });
-	            }
-	            // set state with message if passed up from the form
-	            if (object.message) {
-	                this.setState({
-	                    message: object.message
-	                });
-	            }
-	        }
-	    }, {
-	        key: 'render',
-	        value: function render() {
-	            var name = this.state.name;
-	            var message = this.state.message;
-	            return React.createElement(
-	                'div',
-	                null,
-	                React.createElement(GreetrMessage, { name: name, message: message }),
-	                React.createElement(GreetrForm, { onNewData: this._handleNewData.bind(this) })
-	            );
-	        }
-	    }]);
-
-	    return Greetr;
-	}(React.Component);
-
-	Greetr.defaultProps = {
-	    name: "React",
-	    message: "This is from the component."
-	};
+	// components
+	var Greeter = __webpack_require__(172);
 
 	var name = "Codemzy";
 
-	ReactDOM.render(React.createElement(Greetr, { name: name, message: 'This is a new message not the default!' }), document.getElementById('app'));
+	ReactDOM.render(React.createElement(Greeter, { name: name, message: 'This is a new message not the default!' }), document.getElementById('app'));
 
 /***/ },
 /* 1 */
@@ -21242,6 +21087,214 @@
 	var ReactMount = __webpack_require__(164);
 
 	module.exports = ReactMount.renderSubtreeIntoContainer;
+
+/***/ },
+/* 172 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var React = __webpack_require__(1);
+
+	// components
+	var GreeterMessage = __webpack_require__(173);
+	var GreeterForm = __webpack_require__(174);
+
+	var Greeter = function (_React$Component) {
+	    _inherits(Greeter, _React$Component);
+
+	    function Greeter(props) {
+	        _classCallCheck(this, Greeter);
+
+	        var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Greeter).call(this, props));
+
+	        _this.state = {
+	            name: _this.props.name,
+	            message: _this.props.message
+	        };
+	        return _this;
+	    }
+
+	    _createClass(Greeter, [{
+	        key: '_handleNewData',
+	        value: function _handleNewData(object) {
+	            // set state with name if passed up from the form
+	            if (object.name) {
+	                this.setState({
+	                    name: object.name
+	                });
+	            }
+	            // set state with message if passed up from the form
+	            if (object.message) {
+	                this.setState({
+	                    message: object.message
+	                });
+	            }
+	        }
+	    }, {
+	        key: 'render',
+	        value: function render() {
+	            var name = this.state.name;
+	            var message = this.state.message;
+	            return React.createElement(
+	                'div',
+	                null,
+	                React.createElement(GreeterMessage, { name: name, message: message }),
+	                React.createElement(GreeterForm, { onNewData: this._handleNewData.bind(this) })
+	            );
+	        }
+	    }]);
+
+	    return Greeter;
+	}(React.Component);
+
+	Greeter.defaultProps = {
+	    name: "React",
+	    message: "This is from the component."
+	};
+
+	module.exports = Greeter;
+
+/***/ },
+/* 173 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var React = __webpack_require__(1);
+
+	var GreeterMessage = function (_React$Component) {
+	    _inherits(GreeterMessage, _React$Component);
+
+	    function GreeterMessage() {
+	        _classCallCheck(this, GreeterMessage);
+
+	        return _possibleConstructorReturn(this, Object.getPrototypeOf(GreeterMessage).apply(this, arguments));
+	    }
+
+	    _createClass(GreeterMessage, [{
+	        key: 'render',
+	        value: function render() {
+	            return React.createElement(
+	                'div',
+	                null,
+	                React.createElement(
+	                    'h1',
+	                    null,
+	                    'Hello ',
+	                    this.props.name,
+	                    '!'
+	                ),
+	                React.createElement(
+	                    'p',
+	                    null,
+	                    this.props.message
+	                )
+	            );
+	        }
+	    }]);
+
+	    return GreeterMessage;
+	}(React.Component);
+
+	module.exports = GreeterMessage;
+
+/***/ },
+/* 174 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var React = __webpack_require__(1);
+
+	var GreeterForm = function (_React$Component) {
+	    _inherits(GreeterForm, _React$Component);
+
+	    function GreeterForm() {
+	        _classCallCheck(this, GreeterForm);
+
+	        return _possibleConstructorReturn(this, Object.getPrototypeOf(GreeterForm).apply(this, arguments));
+	    }
+
+	    _createClass(GreeterForm, [{
+	        key: '_onFormSubmit',
+	        value: function _onFormSubmit(e) {
+	            e.preventDefault();
+	            var name = this.refs.name.value;
+	            var message = this.refs.message.value;
+	            var update = {};
+	            if (name.length > 0) {
+	                this.refs.name.value = '';
+	                update.name = name;
+	            }
+	            if (message.length > 0) {
+	                this.refs.message.value = '';
+	                update.message = message;
+	            }
+	            // pass the update object to the Greetr function
+	            this.props.onNewData(update);
+	        }
+	    }, {
+	        key: 'render',
+	        value: function render() {
+	            return React.createElement(
+	                'div',
+	                null,
+	                React.createElement(
+	                    'form',
+	                    { onSubmit: this._onFormSubmit.bind(this) },
+	                    React.createElement(
+	                        'div',
+	                        null,
+	                        React.createElement('input', { type: 'text', placeholder: 'Your name', ref: 'name' })
+	                    ),
+	                    React.createElement(
+	                        'div',
+	                        null,
+	                        React.createElement('textarea', { placeholder: 'Your message...', ref: 'message' })
+	                    ),
+	                    React.createElement(
+	                        'div',
+	                        null,
+	                        React.createElement(
+	                            'button',
+	                            null,
+	                            'Update'
+	                        )
+	                    )
+	                )
+	            );
+	        }
+	    }]);
+
+	    return GreeterForm;
+	}(React.Component);
+
+	module.exports = GreeterForm;
 
 /***/ }
 /******/ ]);
