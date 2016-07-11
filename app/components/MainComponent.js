@@ -4,7 +4,7 @@ var React = require('react');
 var GreeterMessage = require('./GreeterMessage.js');
 var GreeterForm = require('./GreeterForm.js');
 
-class Greeter extends React.Component {
+class MainComponent extends React.Component {
     
     constructor(props) {
         super(props);
@@ -42,9 +42,9 @@ class Greeter extends React.Component {
     
 }
 
-Greeter.defaultProps = {
+MainComponent.defaultProps = {
     name: "React",
     message: "This is from the component."
 };
 
-module.exports = Greeter;
+module.exports = MainComponent;

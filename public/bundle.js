@@ -50,11 +50,11 @@
 	var ReactDOM = __webpack_require__(33);
 
 	// components
-	var Greeter = __webpack_require__(172);
+	var MainComponent = __webpack_require__(172);
 
 	var name = "Codemzy";
 
-	ReactDOM.render(React.createElement(Greeter, { name: name, message: 'This is a new message not the default!' }), document.getElementById('app'));
+	ReactDOM.render(React.createElement(MainComponent, { name: name, message: 'This is a React BoilerPlate' }), document.getElementById('app'));
 
 /***/ },
 /* 1 */
@@ -21108,13 +21108,13 @@
 	var GreeterMessage = __webpack_require__(173);
 	var GreeterForm = __webpack_require__(174);
 
-	var Greeter = function (_React$Component) {
-	    _inherits(Greeter, _React$Component);
+	var MainComponent = function (_React$Component) {
+	    _inherits(MainComponent, _React$Component);
 
-	    function Greeter(props) {
-	        _classCallCheck(this, Greeter);
+	    function MainComponent(props) {
+	        _classCallCheck(this, MainComponent);
 
-	        var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Greeter).call(this, props));
+	        var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(MainComponent).call(this, props));
 
 	        _this.state = {
 	            name: _this.props.name,
@@ -21123,7 +21123,7 @@
 	        return _this;
 	    }
 
-	    _createClass(Greeter, [{
+	    _createClass(MainComponent, [{
 	        key: '_handleNewData',
 	        value: function _handleNewData(object) {
 	            // set state with name if passed up from the form
@@ -21153,15 +21153,15 @@
 	        }
 	    }]);
 
-	    return Greeter;
+	    return MainComponent;
 	}(React.Component);
 
-	Greeter.defaultProps = {
+	MainComponent.defaultProps = {
 	    name: "React",
 	    message: "This is from the component."
 	};
 
-	module.exports = Greeter;
+	module.exports = MainComponent;
 
 /***/ },
 /* 173 */
