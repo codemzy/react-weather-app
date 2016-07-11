@@ -1,4 +1,5 @@
 var React = require('react');
+var {Link} = require('react-router');
 
 class Nav extends React.Component {
     
@@ -6,6 +7,8 @@ class Nav extends React.Component {
         return (
             <div>
                 <h1>This is the Nav</h1>
+                <Link to="/">Get Weather</Link>
+                <Link to="/about">About</Link>
             </div>
         );
     }

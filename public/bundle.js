@@ -26742,6 +26742,10 @@
 
 	var React = __webpack_require__(1);
 
+	var _require = __webpack_require__(173);
+
+	var Link = _require.Link;
+
 	var Nav = function (_React$Component) {
 	    _inherits(Nav, _React$Component);
 
@@ -26761,6 +26765,16 @@
 	                    'h1',
 	                    null,
 	                    'This is the Nav'
+	                ),
+	                React.createElement(
+	                    Link,
+	                    { to: '/' },
+	                    'Get Weather'
+	                ),
+	                React.createElement(
+	                    Link,
+	                    { to: '/about' },
+	                    'About'
 	                )
 	            );
 	        }
