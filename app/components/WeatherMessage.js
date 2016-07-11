@@ -3,9 +3,12 @@ var React = require('react');
 class WeatherMessage extends React.Component {
     
     render() {
+        if (this.props.city.length > 0) {
+            var message = 'This will show the weather in ' + this.props.city; 
+        }
         return (
             <div>
-                <p>This will show the weather in {this.props.city}.</p>
+                <p>{message}</p>
             </div>
         );
     }

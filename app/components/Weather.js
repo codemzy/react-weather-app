@@ -9,7 +9,7 @@ class Weather extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            city: 'your city'
+            city: ''
         };
     }
     

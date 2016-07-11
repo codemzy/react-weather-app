@@ -26822,7 +26822,7 @@
 	        var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Weather).call(this, props));
 
 	        _this.state = {
-	            city: 'your city'
+	            city: ''
 	        };
 	        return _this;
 	    }
@@ -26958,15 +26958,16 @@
 	    _createClass(WeatherMessage, [{
 	        key: 'render',
 	        value: function render() {
+	            if (this.props.city.length > 0) {
+	                var message = 'This will show the weather in ' + this.props.city;
+	            }
 	            return React.createElement(
 	                'div',
 	                null,
 	                React.createElement(
 	                    'p',
 	                    null,
-	                    'This will show the weather in ',
-	                    this.props.city,
-	                    '.'
+	                    message
 	                )
 	            );
 	        }
