@@ -3,31 +3,48 @@ var React = require('react');
 // components
 var WeatherForm = require('./WeatherForm');
 var WeatherMessage = require('./WeatherMessage');
+var openWeatherMap = require('../api/openWeatherMap');
 
 class Weather extends React.Component {
     
     constructor(props) {
         super(props);
         this.state = {
-            city: 'London',
-            temp: 23
+            isLoading: false
         };
     }
     
     _handleSearch(city) {
-        // set state with city passed up from the form
         this.setState({
-          city: city,
-          temp: 24
+            isLoading: true
         });
+        openWeatherMap.getTemp(city).then(function(temp) {
+            this.setState({
+                city: city,
+                temp: temp,
+                isLoading: false
+            });
+        }.bind(this), function(error) {
+            alert(error);
+            this.setState({
+                isLoading: false
+            });
+        }.bind(this));
     }
     
     render() {
+        var renderMessage = function() {
+            if (this.state.isLoading) {
+                return <h3>Fetching weather...</h3>;
+            } else if (this.state.temp) {
+                return <WeatherMessage city={this.state.city} temp={this.state.temp} />;
+            }
+        }.bind(this);
         return (
             <div>
                 <h3>Get Weather</h3>
                 <WeatherForm onSearch={this._handleSearch.bind(this)} />
-                <WeatherMessage city={this.state.city} temp={this.state.temp} />
+                {renderMessage()}
             </div>
         );
     }
