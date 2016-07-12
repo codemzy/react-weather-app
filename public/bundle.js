@@ -26084,7 +26084,8 @@
 	        var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Weather).call(this, props));
 
 	        _this.state = {
-	            isLoading: false
+	            isLoading: false,
+	            errorMessage: false
 	        };
 	        return _this;
 	    }
@@ -26093,18 +26094,20 @@
 	        key: '_handleSearch',
 	        value: function _handleSearch(city) {
 	            this.setState({
-	                isLoading: true
+	                isLoading: true,
+	                errorMessage: false
 	            });
 	            openWeatherMap.getTemp(city).then(function (temp) {
 	                this.setState({
 	                    city: city,
 	                    temp: temp,
-	                    isLoading: false
+	                    isLoading: false,
+	                    errorMessage: false
 	                });
 	            }.bind(this), function (error) {
-	                alert(error);
 	                this.setState({
-	                    isLoading: false
+	                    isLoading: false,
+	                    errorMessage: true
 	                });
 	            }.bind(this));
 	        }
@@ -26117,6 +26120,12 @@
 	                        'h3',
 	                        null,
 	                        'Fetching weather...'
+	                    );
+	                } else if (this.state.errorMessage) {
+	                    return React.createElement(
+	                        'p',
+	                        null,
+	                        'Could not find location.'
 	                    );
 	                } else if (this.state.temp) {
 	                    return React.createElement(WeatherMessage, { city: this.state.city, temp: this.state.temp });
@@ -26131,7 +26140,8 @@
 	                    'Get Weather'
 	                ),
 	                React.createElement(WeatherForm, { onSearch: this._handleSearch.bind(this) }),
-	                renderMessage()
+	                renderMessage(),
+	                this.state.errorMessage
 	            );
 	        }
 	    }]);
@@ -26266,6 +26276,7 @@
 
 	var axios = __webpack_require__(237);
 
+	// back end route to take care of requests
 	var OPEN_WEATHER_MAP_URL = '/api/weather';
 
 	module.exports = {
@@ -26274,9 +26285,13 @@
 	        var requestUrl = OPEN_WEATHER_MAP_URL + '/' + encodedLocation;
 
 	        return axios.get(requestUrl).then(function (res) {
-	            return res.data.main.temp;
-	        }, function (err) {
-	            throw new Error(err);
+	            if (res.data.cod && res.data.message) {
+	                throw new Error(res.data.message);
+	            } else {
+	                return res.data.main.temp;
+	            }
+	        }, function (res) {
+	            throw new Error(res.data.message);
 	        });
 	    }
 	};
