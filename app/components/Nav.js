@@ -2,6 +2,12 @@ var React = require('react');
 var {Link, IndexLink} = require('react-router');
 
 class Nav extends React.Component {
+    
+    _onSearch(e) {
+        e.preventDefault();
+        console.log("Not yet wired up");
+    }
+    
     render() {
         return (
             <div className="top-bar">
@@ -20,8 +26,16 @@ class Nav extends React.Component {
                     </ul>
               </div>
               <div className="top-bar-right">
-                <ul className="menu">
-                </ul>
+                <form onSubmit={this._onSearch}>
+                    <ul className="menu">
+                        <li>
+                            <input type="search" placeholder="Search weather" />
+                        </li>
+                        <li>
+                            <input type="submit" className="button" value="Get Weather" />
+                        </li>
+                    </ul>
+                </form>
               </div>
             </div>
         );
