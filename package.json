@@ -1,7 +1,7 @@
 {
   "name": "react-weather-app",
   "version": "1.0.0",
-  "description": "A React app to get the weather",
+  "description": "Weather Weasel. A React app to get the weather",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -24,5 +24,8 @@
     "babel-preset-react": "^6.11.1",
     "dotenv": "^2.0.0",
     "webpack": "^1.13.1"
+  },
+  "engines": {
+    "node": "5.7.0"
   }
 }
