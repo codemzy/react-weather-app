@@ -38,7 +38,7 @@ class Weather extends React.Component {
     render() {
         var renderMessage = function() {
             if (this.state.isLoading) {
-                return <h3>Fetching weather...</h3>;
+                return <h3 className="text-center">Fetching weather...</h3>;
             } else if (this.state.errorMessage) {
                 return <p>Could not find location.</p>;
             } else if (this.state.temp) {
@@ -47,7 +47,7 @@ class Weather extends React.Component {
         }.bind(this);
         return (
             <div>
-                <h3>Get Weather</h3>
+                <h1 className="text-center">Get Weather</h1>
                 <WeatherForm onSearch={this._handleSearch.bind(this)} />
                 {renderMessage()}
                 {this.state.errorMessage}
