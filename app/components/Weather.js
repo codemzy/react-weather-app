@@ -60,7 +60,7 @@ class Weather extends React.Component {
         var renderModal = () => {
             if (this.state.errorModalMessage) {
                 return (
-                    <ErrorModal />
+                    <ErrorModal message={this.state.errorModalMessage} />
                 );
             }
         };
