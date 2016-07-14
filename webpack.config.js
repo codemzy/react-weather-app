@@ -31,7 +31,8 @@ module.exports = {
                 },
                 test: /\.js$/,
                 exclude: /(node_modules|bower_components)/
-            }
+            },
+            { test: /\.css$/, loader: "style-loader!css-loader" }
         ]
     },
     devtool: 'cheap-module-eval-source-map'

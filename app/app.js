@@ -2,11 +2,11 @@ var React = require('react');
 var ReactDOM = require('react-dom');
 
 // Load foundation
-require('style!css!foundation-sites/dist/foundation.min.css');
+require('foundation-sites/dist/foundation.min.css');
 $(document).foundation();
 
 // Load own css
-require('style!css!./styles/styles.css');
+require('./styles/styles.css');
 
 // routes
 var routes = require('./config/routes');
