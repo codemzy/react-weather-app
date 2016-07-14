@@ -8,6 +8,8 @@ class WeatherForm extends React.Component {
         if (city.length > 0) {
             this.refs.city.value = '';
             this.props.onSearch(city);
+        } else {
+            this.props.onBlankSearch();
         }
     }
     

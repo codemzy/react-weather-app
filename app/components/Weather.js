@@ -4,6 +4,7 @@ var React = require('react');
 var WeatherForm = require('./WeatherForm');
 var WeatherMessage = require('./WeatherMessage');
 var openWeatherMap = require('../api/openWeatherMap');
+var ErrorModal = require('./ErrorModal');
 
 class Weather extends React.Component {
     
@@ -11,14 +12,16 @@ class Weather extends React.Component {
         super(props);
         this.state = {
             isLoading: false,
-            errorMessage: false
+            errorMessage: false,
+            errorModalMessage: false
         };
     }
     
     _handleSearch(city) {
         this.setState({
             isLoading: true,
-            errorMessage: false
+            errorMessage: false,
+            errorModalMessage: false
         });
         openWeatherMap.getTemp(city).then(function(temp) {
             this.setState({
@@ -35,6 +38,14 @@ class Weather extends React.Component {
         }.bind(this));
     }
     
+    _handleBlankSearch() {
+        this.setState({
+            isLoading: false,
+            errorMessage: false,
+            errorModalMessage: "You need to enter a city or location."
+        });
+    }
+    
     render() {
         var renderMessage = function() {
             if (this.state.isLoading) {
@@ -45,12 +56,20 @@ class Weather extends React.Component {
                 return <WeatherMessage city={this.state.city} temp={this.state.temp} />;
             }
         }.bind(this);
+        // bind with arrow function
+        var renderModal = () => {
+            if (this.state.errorModalMessage) {
+                return (
+                    <ErrorModal />
+                );
+            }
+        };
         return (
             <div>
                 <h1 className="text-center">Get Weather</h1>
-                <WeatherForm onSearch={this._handleSearch.bind(this)} />
+                <WeatherForm onSearch={this._handleSearch.bind(this)} onBlankSearch={this._handleBlankSearch.bind(this)} />
                 {renderMessage()}
-                {this.state.errorMessage}
+                {renderModal()}
             </div>
         );
     }
