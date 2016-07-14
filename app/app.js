@@ -6,7 +6,7 @@ require('foundation-sites/dist/foundation.min.css');
 $(document).foundation();
 
 // Load own css
-require('./styles/styles.css');
+require('./styles/styles.scss');
 
 // routes
 var routes = require('./config/routes');
