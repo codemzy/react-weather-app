@@ -23,13 +23,15 @@ class Weather extends React.Component {
             errorMessage: false,
             errorModalMessage: false,
             location: false,
-            temp: false
+            temp: false,
+            description: false
         });
         openWeatherMap.getTemp(city).then(function(data) {
             this.setState({
                 city: city,
                 temp: data.main.temp,
                 iconCode: data.weather[0].id,
+                description: [data.weather[0].main, data.wind.speed],
                 isLoading: false,
                 errorMessage: false
             });
@@ -38,7 +40,8 @@ class Weather extends React.Component {
                 isLoading: false,
                 errorMessage: true,
                 location: false,
-                temp: false
+                temp: false,
+                description: false
             });
         }.bind(this));
     }
@@ -49,7 +52,8 @@ class Weather extends React.Component {
             errorMessage: false,
             errorModalMessage: "You need to enter a city or location.",
             location: false,
-            temp: false
+            temp: false,
+            description: false
         });
     }
     
@@ -80,7 +84,7 @@ class Weather extends React.Component {
             } else if (this.state.errorMessage) {
                 return <p>Could not find location.</p>;
             } else if (this.state.temp) {
-                return <WeatherMessage city={this.state.city} temp={this.state.temp} />;
+                return <WeatherMessage city={this.state.city} temp={this.state.temp} description={this.state.description} />;
             }
         }.bind(this);
         // bind with arrow function
