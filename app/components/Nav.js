@@ -25,12 +25,12 @@ class Nav extends React.Component {
                       <li>
                         <Link to="/about" activeClassName="active">About</Link>
                       </li>
-                      <li>
+                      <li className="show-for-large">
                         <Link to="/examples" activeClassName="active">Examples</Link>
                       </li>
                     </ul>
               </div>
-              <div className="top-bar-right">
+              <div className="top-bar-right show-for-large">
                 <form onSubmit={this._onSearch.bind(this)}>
                     <ul className="menu">
                         <li>
