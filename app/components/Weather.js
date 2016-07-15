@@ -21,7 +21,9 @@ class Weather extends React.Component {
         this.setState({
             isLoading: true,
             errorMessage: false,
-            errorModalMessage: false
+            errorModalMessage: false,
+            location: false,
+            temp: false
         });
         openWeatherMap.getTemp(city).then(function(temp) {
             this.setState({
@@ -44,6 +46,14 @@ class Weather extends React.Component {
             errorMessage: false,
             errorModalMessage: "You need to enter a city or location."
         });
+    }
+    
+    componentDidMount() {
+        var location = this.props.location.query.location;
+        if (location && location.length > 0) {
+            this._handleSearch(location);
+            window.location.hash = '#/';
+        }
     }
     
     render() {
