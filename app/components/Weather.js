@@ -48,10 +48,22 @@ class Weather extends React.Component {
         });
     }
     
+    // if page is located with location as params
     componentDidMount() {
         var location = this.props.location.query.location;
         if (location && location.length > 0) {
             this._handleSearch(location);
+            // now clear location in params
+            window.location.hash = '#/';
+        }
+    }
+    
+    // if nav search is peformed on getweather page
+    componentWillReceiveProps(newProps) {
+        var location = newProps.location.query.location;
+        if (location && location.length > 0) {
+            this._handleSearch(location);
+            // now clear location in params
             window.location.hash = '#/';
         }
     }
