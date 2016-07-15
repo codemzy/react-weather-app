@@ -32,7 +32,7 @@ class Nav extends React.Component {
                             <input type="search" placeholder="Enter city name" />
                         </li>
                         <li>
-                            <input type="submit" className="button" value="Get Weather" />
+                            <input type="submit" className="button hollow" value="Get Weather" />
                         </li>
                     </ul>
                 </form>

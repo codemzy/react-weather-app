@@ -1,10 +1,13 @@
-$main-color: #313131;
+$main-color: #ffffff;
+$link-color: #FFCD00;
+$hover-color: #FFDE58;
 $space-large: 20px;
 
 body {
-    background: #EDE574; /* fallback for old browsers */
-    background: -webkit-linear-gradient(#EDE574 , #E1F5C4); /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(#EDE574 , #E1F5C4); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: #005C97; /* fallback for old browsers */
+    background: -webkit-linear-gradient(#005C97 , #363795); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(#005C97 , #363795); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    color: $main-color;
 }
 
 .top-bar, .top-bar ul {
@@ -21,7 +24,39 @@ input[type=search] {
     box-shadow: none;
 }
 
-.button.hollow.primary {
+.button.hollow {
     color: $main-color;
     border: 1px solid $main-color;
 }
+
+.button.hollow:hover {
+    color: $link-color;
+    border: 1px solid $link-color;
+}
+
+a {
+    color: $link-color;
+}
+
+a.active, a:focus {
+    color: $hover-color;
+    text-decoration: underline;
+    outline: none;
+}
+
+a:hover {
+    color: $hover-color;
+}
+
+#error-modal {
+    color: #313131;
+    .button.hollow {
+        color: #313131;
+        border: 1px solid #313131;
+    }
+    .button.hollow:hover {
+        color: $link-color;
+        border: 1px solid $link-color;
+    }
+}
+
