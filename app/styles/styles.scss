@@ -24,9 +24,10 @@ input[type=search] {
     box-shadow: none;
 }
 
-.button.hollow {
+.button.hollow, .button.hollow:focus {
     color: $main-color;
     border: 1px solid $main-color;
+    outline: none;
 }
 
 .button.hollow:hover {
