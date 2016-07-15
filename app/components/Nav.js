@@ -18,7 +18,7 @@ class Nav extends React.Component {
             <div className="top-bar">
               <div className="top-bar-left">
                     <ul className="menu">
-                    <li className="menu-text">Weather Weasel</li>
+                    <li className="menu-text"><img src="/img/weatherweasellogo.png"></img>Weather Weasel</li>
                       <li>
                         <IndexLink to="/" activeClassName="active">Get Weather</IndexLink>
                       </li>

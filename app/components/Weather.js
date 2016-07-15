@@ -88,6 +88,7 @@ class Weather extends React.Component {
         };
         return (
             <div>
+                <img src="/img/weatherweasel.png" className="float-center"></img>
                 <h1 className="text-center page-title">Get Weather</h1>
                 <WeatherForm onSearch={this._handleSearch.bind(this)} onBlankSearch={this._handleBlankSearch.bind(this)} />
                 {renderMessage()}

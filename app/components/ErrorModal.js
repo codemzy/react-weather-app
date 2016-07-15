@@ -7,11 +7,11 @@ class ErrorModal extends React.Component {
     componentDidMount() {
         var {title, message}= this.props;
         var modalMarkup = (
-            <div className="reveal tiny" id="error-modal" data-reveal="">
+            <div className="reveal tiny text-center" id="error-modal" data-reveal="">
               <h4>{title}.</h4>
               <p>{message}</p>
               <p>
-              <button className="button hollow" data-close="" aria-label="Close" type="button">
+              <button className="button hollow expanded" data-close="" aria-label="Close" type="button">
                 Close
               </button>
               </p>
