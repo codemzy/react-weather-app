@@ -25,17 +25,20 @@ class Weather extends React.Component {
             location: false,
             temp: false
         });
-        openWeatherMap.getTemp(city).then(function(temp) {
+        openWeatherMap.getTemp(city).then(function(data) {
             this.setState({
                 city: city,
-                temp: temp,
+                temp: data.main.temp,
+                iconCode: data.weather[0].id,
                 isLoading: false,
                 errorMessage: false
             });
         }.bind(this), function(error) {
             this.setState({
                 isLoading: false,
-                errorMessage: true
+                errorMessage: true,
+                location: false,
+                temp: false
             });
         }.bind(this));
     }
@@ -44,7 +47,9 @@ class Weather extends React.Component {
         this.setState({
             isLoading: false,
             errorMessage: false,
-            errorModalMessage: "You need to enter a city or location."
+            errorModalMessage: "You need to enter a city or location.",
+            location: false,
+            temp: false
         });
     }
     
@@ -86,9 +91,41 @@ class Weather extends React.Component {
                 );
             }
         };
+        // bind with arrow function
+        var renderIcon = () => {
+            var icon = '';
+            if (this.state.isLoading) {
+                icon = "fa fa-5x fa-refresh fa-spin";
+                return <h1 className="text-center"><i className={icon}></i></h1>;
+            } else if (this.state.temp) {
+                // select the right icon for the id
+                if (this.state.iconCode === 802 || this.state.iconCode === 803 || this.state.iconCode === 804) {
+                    icon = "fa fa-5x fa-cloud";
+                } else if (this.state.iconCode === 800 || this.state.iconCode === 801 || this.state.iconCode === 950 || this.state.iconCode === 951 || this.state.iconCode === 952 || this.state.iconCode === 953 || this.state.iconCode === 904) {
+                    icon = "fa fa-5x fa-sun-o";
+                } else if (this.state.iconCode === 300 || this.state.iconCode === 301 || this.state.iconCode === 302 || this.state.iconCode === 310 || this.state.iconCode === 311 || this.state.iconCode === 312 || this.state.iconCode === 313 || this.state.iconCode === 314 || this.state.iconCode === 321) {
+                    icon = "fa fa-5x fa-umbrella";
+                } else if (this.state.iconCode === 500 || this.state.iconCode === 501 || this.state.iconCode === 502 || this.state.iconCode === 503 || this.state.iconCode === 504 || this.state.iconCode === 511 || this.state.iconCode === 520 || this.state.iconCode === 521 || this.state.iconCode === 522 || this.state.iconCode === 531) {
+                    icon = "fa fa-5x fa-tint";
+                } else if (this.state.iconCode === 200 || this.state.iconCode === 201 || this.state.iconCode === 202 || this.state.iconCode === 210 || this.state.iconCode === 211 || this.state.iconCode === 212 || this.state.iconCode === 221 || this.state.iconCode === 230 || this.state.iconCode === 231 || this.state.iconCode === 232 || this.state.iconCode === 960 || this.state.iconCode === 961 || this.state.iconCode === 962 || this.state.iconCode === 900 || this.state.iconCode === 901 || this.state.iconCode === 902) {
+                    icon = "fa fa-5x fa-bolt";
+                } else if (this.state.iconCode === 600 || this.state.iconCode === 601 || this.state.iconCode === 602 || this.state.iconCode === 611 || this.state.iconCode === 612 || this.state.iconCode === 615 || this.state.iconCode === 620 || this.state.iconCode === 621 || this.state.iconCode === 622 || this.state.iconCode === 903 || this.state.iconCode === 906) {
+                    icon = "fa fa-5x fa-asterisk";
+                } else if (this.state.iconCode === 954 || this.state.iconCode === 955 || this.state.iconCode === 956 || this.state.iconCode === 957 || this.state.iconCode === 958 || this.state.iconCode === 959  || this.state.iconCode === 905) {
+                    icon = "fa fa-5x fa-flag";
+                } else if (this.state.iconCode === 701 || this.state.iconCode === 711 || this.state.iconCode === 721 || this.state.iconCode === 731 || this.state.iconCode === 741 || this.state.iconCode === 751 || this.state.iconCode === 761 || this.state.iconCode === 762 || this.state.iconCode === 771 || this.state.iconCode === 781) {
+                    icon = "fa fa-5x fa-spinner";
+                } else {
+                    icon = "fa fa-5x fa-globe";
+                }
+                return <h1 className="text-center"><i className={icon}></i></h1>;
+            } else {
+                return <img src="/img/weatherweasel.png" className="float-center"></img>;
+            }
+        };
         return (
             <div>
-                <img src="/img/weatherweasel.png" className="float-center"></img>
+                {renderIcon()}
                 <h1 className="text-center page-title">Get Weather</h1>
                 <WeatherForm onSearch={this._handleSearch.bind(this)} onBlankSearch={this._handleBlankSearch.bind(this)} />
                 {renderMessage()}
